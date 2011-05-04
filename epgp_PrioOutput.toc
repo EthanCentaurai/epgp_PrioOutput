@@ -1,0 +1,8 @@
+## Interface: 40100
+## Title: EPGP Loot Priority Output
+## Notes: Prints the highest loot priority ratings of your current raid members in raid chat.
+## Version: 1.1
+## Author: Ethan Centaurai
+## Dependencies: epgp
+
+Core.lua

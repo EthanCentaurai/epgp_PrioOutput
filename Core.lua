@@ -21,11 +21,15 @@ local function output(num, ...)
 
 	for i = 1, GetNumRaidMembers() do
 		local name = UnitName("raid"..i)
-		local ep, gp = EPGP:GetEPGP(name)
-		local pr
+		local ep, gp, pr = 0, 0, 0
 
-		if ep <= minEP or (ep <= 0 or gp <= 0) then pr = 0
-		else pr = ep / gp end
+		if UnitIsInMyGuild(name) then
+			ep, gp = EPGP:GetEPGP(name)
+
+			if ep >= minEP and (ep >= 0 or gp >= 0) then
+				pr = ep / gp
+			end
+		end
 
 		table.insert(data, { name = name, ep = ep, gp = gp, pr = pr })
 	end
